@@ -16,6 +16,7 @@ open class BasePresenter<V : ViewBehavior, I : Interactor, R : Router> :
     protected var interactor: I? = null
         set(value) {
             value?.setInteractorOutput(this)
+            field = value
         }
 
     protected var router: R? = null
