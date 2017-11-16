@@ -45,6 +45,34 @@ android {
     }
 }
 
+ext {
+    bintrayRepo = 'teslacode'
+    bintrayName = 'viper'
+
+    publishedGroupId = 'com.teslacode.viper'
+    libraryName = 'Viper'
+    artifact = 'viper'
+
+    libraryDescription = 'Viper framework for android'
+
+    siteUrl = 'https://github.com/teslacode/ViperAndroid'
+    gitUrl = 'https://github.com/teslacode/ViperAndroid.git'
+
+    libraryVersion = '0.1.0'
+
+    developerId = 'adef145'
+    developerName = 'Ade Fruandta'
+    developerEmail = 'ade.fruandta@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+tasks.withType(Javadoc).all {
+    enabled = false
+}
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
@@ -61,3 +89,7 @@ dependencies {
     // Kotlin
     compile "org.jetbrains.kotlin:kotlin-stdlib:${kotlin_version}"
 }
+
+// Place it at the end of the file
+apply from: 'https://raw.githubusercontent.com/teslacode/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/teslacode/JCenter/master/bintrayv1.gradle'
