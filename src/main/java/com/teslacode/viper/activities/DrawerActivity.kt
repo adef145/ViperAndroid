@@ -1,11 +1,12 @@
 package com.teslacode.viper.activities
 
 import android.os.Bundle
-import android.support.design.widget.NavigationView
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
+import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.ViewGroup
 import com.teslacode.viper.R
 import com.teslacode.viper.contracts.BaseContract.Router
 import com.teslacode.viper.contracts.DrawerActivityContract.*
@@ -25,17 +26,15 @@ abstract class DrawerActivity<F : BaseFragment<*>, P : Presenter> : BaseActivity
 
     override var layoutResId: Int = R.layout.activity_drawer
 
-    protected abstract var menuResId: Int
-
     protected lateinit var drawerToggle: ActionBarDrawerToggle
 
     protected val drawerLayout: DrawerLayout by bindView(R.id.drawerLayout)
 
-    protected val navigationView: NavigationView by bindView(R.id.navigationView)
+    protected val drawerMenuContainer: ViewGroup by bindView(R.id.drawerMenuContainer)
 
     protected val isDrawerOpen: Boolean
         get() {
-            return drawerLayout.isDrawerOpen(navigationView)
+            return drawerLayout.isDrawerOpen(drawerMenuContainer)
         }
 
     // endregion
@@ -61,8 +60,7 @@ abstract class DrawerActivity<F : BaseFragment<*>, P : Presenter> : BaseActivity
 
         drawerLayout.addDrawerListener(drawerToggle)
 
-        navigationView.inflateMenu(menuResId)
-        navigationView.setNavigationItemSelectedListener { onOptionsItemSelected(it) }
+        onCreateDrawerMenu(LayoutInflater.from(this), drawerMenuContainer)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -96,6 +94,14 @@ abstract class DrawerActivity<F : BaseFragment<*>, P : Presenter> : BaseActivity
 
     @Suppress("UNCHECKED_CAST")
     override fun onCreatePresenter(savedInstanceState: Bundle?): P? = DrawerActivityPresenter<ViewBehavior, Interactor, Router>(this, DrawerActivityInteractor<InteractorOutput>(), BaseRouter(this)) as P
+
+    // endregion
+
+    // region Drawer Activity
+
+    open fun onCreateDrawerMenu(inflater: LayoutInflater?, container: ViewGroup) {
+
+    }
 
     // endregion
 
