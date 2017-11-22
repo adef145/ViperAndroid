@@ -18,6 +18,10 @@ open class ActivityInteractor<T : InteractorOutput> : BaseInteractor<T>(), Inter
 
     }
 
+    override fun onPostCreate() {
+        
+    }
+
     override fun onStart() {
 
     }

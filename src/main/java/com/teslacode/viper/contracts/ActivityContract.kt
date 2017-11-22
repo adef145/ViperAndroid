@@ -35,6 +35,8 @@ interface ActivityContract {
 
         fun <F : BaseFragment<*>> onFragmentCreated(fragment: F?)
 
+        fun onPostCreate()
+
         fun onStart()
 
         fun onResume()
@@ -49,6 +51,8 @@ interface ActivityContract {
     interface Interactor : BaseContract.Interactor {
 
         fun onCreate(extras: Bundle?, savedInstanceState: Bundle?)
+
+        fun onPostCreate()
 
         fun onStart()
 

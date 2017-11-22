@@ -48,6 +48,11 @@ open class BaseActivity<F : BaseFragment<*>, P : Presenter> : AppCompatActivity(
         onPresenterCreated(onCreatePresenter(savedInstanceState), savedInstanceState)
     }
 
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+        presenter?.onPostCreate()
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return if (item.itemId == android.R.id.home) {
             onBackPressed()

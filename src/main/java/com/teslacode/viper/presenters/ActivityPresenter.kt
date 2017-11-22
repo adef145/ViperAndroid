@@ -53,6 +53,10 @@ open class ActivityPresenter<V : ViewBehavior, I : Interactor, R : Router>(view:
         }
     }
 
+    override fun onPostCreate() {
+        interactor?.onPostCreate()
+    }
+
     override fun onStart() {
         this.interactor?.onStart()
     }
