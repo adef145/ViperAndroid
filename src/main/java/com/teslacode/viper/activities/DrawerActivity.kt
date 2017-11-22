@@ -1,12 +1,12 @@
 package com.teslacode.viper.activities
 
 import android.os.Bundle
+import android.support.design.widget.NavigationView
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
-import android.view.ViewGroup
 import com.teslacode.viper.R
 import com.teslacode.viper.contracts.BaseContract.Router
 import com.teslacode.viper.contracts.DrawerActivityContract.*
@@ -30,11 +30,11 @@ abstract class DrawerActivity<F : BaseFragment<*>, P : Presenter> : BaseActivity
 
     protected val drawerLayout: DrawerLayout by bindView(R.id.drawerLayout)
 
-    protected val drawerMenuContainer: ViewGroup by bindView(R.id.drawerMenuContainer)
+    protected val navigationView: NavigationView by bindView(R.id.navigationView)
 
     protected val isDrawerOpen: Boolean
         get() {
-            return drawerLayout.isDrawerOpen(drawerMenuContainer)
+            return drawerLayout.isDrawerOpen(navigationView)
         }
 
     // endregion
@@ -60,7 +60,7 @@ abstract class DrawerActivity<F : BaseFragment<*>, P : Presenter> : BaseActivity
 
         drawerLayout.addDrawerListener(drawerToggle)
 
-        onCreateDrawerMenu(LayoutInflater.from(this), drawerMenuContainer)
+        onCreateDrawerMenu(LayoutInflater.from(this), navigationView)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -99,7 +99,7 @@ abstract class DrawerActivity<F : BaseFragment<*>, P : Presenter> : BaseActivity
 
     // region Drawer Activity
 
-    open fun onCreateDrawerMenu(inflater: LayoutInflater?, container: ViewGroup) {
+    open fun onCreateDrawerMenu(inflater: LayoutInflater?, navigationView: NavigationView) {
 
     }
 
