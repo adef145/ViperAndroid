@@ -7,4 +7,4 @@ import com.teslacode.viper.contracts.DrawerActivityContract.InteractorOutput
  * Created by adefruandta on 10/6/17.
  */
 
-class DrawerActivityInteractor<T : InteractorOutput> : ActivityInteractor<T>(), Interactor
+open class DrawerActivityInteractor<T : InteractorOutput> : ActivityInteractor<T>(), Interactor
