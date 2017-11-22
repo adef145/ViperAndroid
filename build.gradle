@@ -58,7 +58,7 @@ ext {
     siteUrl = 'https://github.com/teslacode/ViperAndroid'
     gitUrl = 'https://github.com/teslacode/ViperAndroid.git'
 
-    libraryVersion = '0.2.1'
+    libraryVersion = '0.2.2'
 
     developerId = 'adef145'
     developerName = 'Ade Fruandta'
