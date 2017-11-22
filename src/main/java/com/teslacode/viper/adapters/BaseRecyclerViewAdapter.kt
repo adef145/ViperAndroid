@@ -17,7 +17,7 @@ abstract class BaseRecyclerViewAdapter<T, V : BaseRecyclerViewHolder<T>> : Recyc
 
     var data: List<T>? = null
         set(value) {
-            field = data
+            field = value
             notifyDataSetChanged()
         }
 
