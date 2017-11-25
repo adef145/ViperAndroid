@@ -1,12 +1,12 @@
 package com.teslacode.viper.presenters
 
-import com.teslacode.viper.contracts.BaseContract.*
+import com.teslacode.viper.contracts.Contract.*
 
 /**
  * Created by adefruandta on 8/3/17.
  */
 
-open class BasePresenter<V : ViewBehavior, I : Interactor, R : Router> :
+open class ViperPresenter<V : ViewBehavior, I : Interactor, R : Router> :
         Presenter, InteractorOutput {
 
     // region Attributes

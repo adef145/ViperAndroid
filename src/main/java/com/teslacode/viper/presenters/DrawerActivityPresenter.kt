@@ -1,6 +1,6 @@
 package com.teslacode.viper.presenters
 
-import com.teslacode.viper.contracts.BaseContract.Router
+import com.teslacode.viper.contracts.Contract.Router
 import com.teslacode.viper.contracts.DrawerActivityContract.*
 
 /**

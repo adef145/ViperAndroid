@@ -8,13 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import com.teslacode.viper.listeners.OnItemClickListener
-import com.teslacode.viper.viewholders.BaseViewHolder
+import com.teslacode.viper.viewholders.ViperViewHolder
 
 /**
  * Created by adefruandta on 8/4/17.
  */
 
-abstract class BaseArrayAdapter<T, V : BaseViewHolder<T>> : ArrayAdapter<T> {
+abstract class ViperArrayAdapter<T, V : ViperViewHolder<T>> : ArrayAdapter<T> {
 
     // region Attributes
 

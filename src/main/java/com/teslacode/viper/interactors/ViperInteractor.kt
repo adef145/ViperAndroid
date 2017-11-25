@@ -1,13 +1,13 @@
 package com.teslacode.viper.interactors
 
-import com.teslacode.viper.contracts.BaseContract.Interactor
-import com.teslacode.viper.contracts.BaseContract.InteractorOutput
+import com.teslacode.viper.contracts.Contract.Interactor
+import com.teslacode.viper.contracts.Contract.InteractorOutput
 
 /**
  * Created by adefruandta on 8/3/17.
  */
 
-open class BaseInteractor<T : InteractorOutput> : Interactor {
+open class ViperInteractor<T : InteractorOutput> : Interactor {
 
     // region Attributes
 

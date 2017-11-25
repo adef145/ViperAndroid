@@ -9,7 +9,7 @@ import com.teslacode.viper.contracts.ActivityContract.InteractorOutput
  * Created by adefruandta on 8/13/17.
  */
 
-open class ActivityInteractor<T : InteractorOutput> : BaseInteractor<T>(), Interactor {
+open class ActivityInteractor<T : InteractorOutput> : ViperInteractor<T>(), Interactor {
 
 
     // region Interactor

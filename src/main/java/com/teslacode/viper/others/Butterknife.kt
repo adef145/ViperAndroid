@@ -12,7 +12,7 @@ import android.app.DialogFragment
 import android.app.Fragment
 import android.support.v7.widget.RecyclerView.ViewHolder
 import android.view.View
-import com.teslacode.viper.viewholders.BaseViewHolder
+import com.teslacode.viper.viewholders.ViperViewHolder
 import kotlin.properties.ReadOnlyProperty
 import kotlin.reflect.KProperty
 import android.support.v4.app.DialogFragment as SupportDialogFragment
@@ -42,8 +42,8 @@ public fun <V : View> SupportFragment.bindView(id: Int)
 public fun <V : View> ViewHolder.bindView(id: Int)
         : ReadOnlyProperty<ViewHolder, V> = required(id, viewFinder)
 
-public fun <V : View> BaseViewHolder<*>.bindView(id: Int)
-        : ReadOnlyProperty<BaseViewHolder<*>, V> = required(id, viewFinder)
+public fun <V : View> ViperViewHolder<*>.bindView(id: Int)
+        : ReadOnlyProperty<ViperViewHolder<*>, V> = required(id, viewFinder)
 
 public fun <V : View> View.bindOptionalView(id: Int)
         : ReadOnlyProperty<View, V?> = optional(id, viewFinder)
@@ -69,8 +69,8 @@ public fun <V : View> SupportFragment.bindOptionalView(id: Int)
 public fun <V : View> ViewHolder.bindOptionalView(id: Int)
         : ReadOnlyProperty<ViewHolder, V?> = optional(id, viewFinder)
 
-public fun <V : View> BaseViewHolder<*>.bindOptionalView(id: Int)
-        : ReadOnlyProperty<BaseViewHolder<*>, V?> = optional(id, viewFinder)
+public fun <V : View> ViperViewHolder<*>.bindOptionalView(id: Int)
+        : ReadOnlyProperty<ViperViewHolder<*>, V?> = optional(id, viewFinder)
 
 public fun <V : View> View.bindViews(vararg ids: Int)
         : ReadOnlyProperty<View, List<V>> = required(ids, viewFinder)
@@ -96,8 +96,8 @@ public fun <V : View> SupportFragment.bindViews(vararg ids: Int)
 public fun <V : View> ViewHolder.bindViews(vararg ids: Int)
         : ReadOnlyProperty<ViewHolder, List<V>> = required(ids, viewFinder)
 
-public fun <V : View> BaseViewHolder<*>.bindViews(vararg ids: Int)
-        : ReadOnlyProperty<BaseViewHolder<*>, List<V>> = required(ids, viewFinder)
+public fun <V : View> ViperViewHolder<*>.bindViews(vararg ids: Int)
+        : ReadOnlyProperty<ViperViewHolder<*>, List<V>> = required(ids, viewFinder)
 
 public fun <V : View> View.bindOptionalViews(vararg ids: Int)
         : ReadOnlyProperty<View, List<V>> = optional(ids, viewFinder)
@@ -123,8 +123,8 @@ public fun <V : View> SupportFragment.bindOptionalViews(vararg ids: Int)
 public fun <V : View> ViewHolder.bindOptionalViews(vararg ids: Int)
         : ReadOnlyProperty<ViewHolder, List<V>> = optional(ids, viewFinder)
 
-public fun <V : View> BaseViewHolder<*>.bindOptionalView(vararg ids: Int)
-        : ReadOnlyProperty<BaseViewHolder<*>, List<V>> = optional(ids, viewFinder)
+public fun <V : View> ViperViewHolder<*>.bindOptionalView(vararg ids: Int)
+        : ReadOnlyProperty<ViperViewHolder<*>, List<V>> = optional(ids, viewFinder)
 
 private val View.viewFinder: View.(Int) -> View?
     get() = { findViewById(it) }
@@ -142,7 +142,7 @@ private val SupportFragment.viewFinder: SupportFragment.(Int) -> View?
     get() = { view!!.findViewById(it) }
 private val ViewHolder.viewFinder: ViewHolder.(Int) -> View?
     get() = { itemView.findViewById(it) }
-private val BaseViewHolder<*>.viewFinder: BaseViewHolder<*>.(Int) -> View?
+private val ViperViewHolder<*>.viewFinder: ViperViewHolder<*>.(Int) -> View?
     get() = { itemView.findViewById(it) }
 
 private fun viewNotFound(id: Int, desc: KProperty<*>): Nothing =

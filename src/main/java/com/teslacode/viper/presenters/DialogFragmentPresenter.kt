@@ -1,7 +1,7 @@
 package com.teslacode.viper.presenters
 
 import android.app.Dialog
-import com.teslacode.viper.contracts.BaseContract.Router
+import com.teslacode.viper.contracts.Contract.Router
 import com.teslacode.viper.contracts.DialogFragmentContract.*
 
 /**

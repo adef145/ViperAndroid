@@ -2,16 +2,14 @@ package com.teslacode.viper.contracts
 
 import android.content.Intent
 import android.os.Bundle
-import com.teslacode.viper.interactors.outputs.BaseInteractorOutput
-import com.teslacode.viper.viewbehavior.BaseViewBehavior
 
 /**
  * Created by adefruandta on 8/7/17.
  */
 
-interface BaseContract {
+interface Contract {
 
-    interface ViewBehavior : BaseViewBehavior
+    interface ViewBehavior
 
     interface Presenter {
 
@@ -25,7 +23,7 @@ interface BaseContract {
         fun unregister()
     }
 
-    interface InteractorOutput : BaseInteractorOutput
+    interface InteractorOutput
 
     interface Router {
 

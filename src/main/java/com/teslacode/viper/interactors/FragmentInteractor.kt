@@ -8,7 +8,7 @@ import com.teslacode.viper.contracts.FragmentContract
  * Created by adefruandta on 8/8/17.
  */
 
-open class FragmentInteractor<T : FragmentContract.InteractorOutput> : BaseInteractor<T>(), FragmentContract.Interactor {
+open class FragmentInteractor<T : FragmentContract.InteractorOutput> : ViperInteractor<T>(), FragmentContract.Interactor {
 
     // region Interactor
 

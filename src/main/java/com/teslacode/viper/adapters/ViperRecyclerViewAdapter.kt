@@ -5,13 +5,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.teslacode.viper.listeners.OnItemClickListener
-import com.teslacode.viper.viewholders.BaseRecyclerViewHolder
+import com.teslacode.viper.viewholders.ViperRecyclerViewHolder
 
 /**
  * Created by adefruandta on 8/13/17.
  */
 
-abstract class BaseRecyclerViewAdapter<T, V : BaseRecyclerViewHolder<T>> : RecyclerView.Adapter<V>() {
+abstract class ViperRecyclerViewAdapter<T, V : ViperRecyclerViewHolder<T>> : RecyclerView.Adapter<V>() {
 
     // region Attributes
 

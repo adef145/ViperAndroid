@@ -8,7 +8,7 @@ import com.teslacode.viper.listeners.OnItemClickListener
  * Created by adefruandta on 8/13/17.
  */
 
-abstract class BaseRecyclerViewHolder<T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
+abstract class ViperRecyclerViewHolder<T>(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     // region Attributes
 

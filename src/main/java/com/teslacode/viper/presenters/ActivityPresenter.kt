@@ -3,15 +3,15 @@ package com.teslacode.viper.presenters
 import android.content.Intent
 import android.os.Bundle
 import com.teslacode.viper.contracts.ActivityContract.*
-import com.teslacode.viper.contracts.BaseContract.Router
-import com.teslacode.viper.fragments.BaseFragment
+import com.teslacode.viper.contracts.Contract.Router
+import com.teslacode.viper.fragments.ViperFragment
 
 /**
  * Created by adefruandta on 8/13/17.
  */
 
 open class ActivityPresenter<V : ViewBehavior, I : Interactor, R : Router>(view: V?, interactor: I? = null, router: R? = null) :
-        BasePresenter<V, I, R>(view, interactor, router), Presenter, InteractorOutput {
+        ViperPresenter<V, I, R>(view, interactor, router), Presenter, InteractorOutput {
 
     // region Attributes
 
@@ -44,7 +44,7 @@ open class ActivityPresenter<V : ViewBehavior, I : Interactor, R : Router>(view:
         }
     }
 
-    override fun <F : BaseFragment<*>> onFragmentCreated(fragment: F?) {
+    override fun <F : ViperFragment<*>> onFragmentCreated(fragment: F?) {
         if (fragment != null) {
             this.view?.showFragment()
 

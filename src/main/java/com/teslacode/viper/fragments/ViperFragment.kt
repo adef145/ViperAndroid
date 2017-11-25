@@ -4,17 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
-import com.teslacode.viper.contracts.BaseContract.Router
+import com.teslacode.viper.contracts.Contract.Router
 import com.teslacode.viper.contracts.FragmentContract.*
 import com.teslacode.viper.interactors.FragmentInteractor
 import com.teslacode.viper.presenters.FragmentPresenter
-import com.teslacode.viper.routers.BaseRouter
+import com.teslacode.viper.routers.ViperRouter
 
 /**
  * Created by adefruandta on 8/3/17.
  */
 
-abstract class BaseFragment<T : Presenter> : Fragment(), ViewBehavior {
+abstract class ViperFragment<T : Presenter> : Fragment(), ViewBehavior {
 
     // region Attributes
 
@@ -94,7 +94,7 @@ abstract class BaseFragment<T : Presenter> : Fragment(), ViewBehavior {
 
     @Suppress("UNCHECKED_CAST")
     open fun onCreatePresenter(savedInstanceState: Bundle?): T {
-        return FragmentPresenter<ViewBehavior, Interactor, Router>(this, FragmentInteractor<InteractorOutput>(), BaseRouter(this)) as T
+        return FragmentPresenter<ViewBehavior, Interactor, Router>(this, FragmentInteractor<InteractorOutput>(), ViperRouter(this)) as T
     }
 
     open fun onPresenterCreated(presenter: T, savedInstanceState: Bundle?) {

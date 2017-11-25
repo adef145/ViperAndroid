@@ -5,13 +5,13 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import com.teslacode.viper.contracts.BaseContract.Router
+import com.teslacode.viper.contracts.Contract.Router
 
 /**
  * Created by adefruandta on 8/7/17.
  */
 
-open class BaseRouter : Router {
+open class ViperRouter : Router {
 
     // region Attributes
 
@@ -43,7 +43,7 @@ open class BaseRouter : Router {
         this.context = context
     }
 
-    constructor(router: BaseRouter) {
+    constructor(router: ViperRouter) {
         this.activity = router.activity
         this.fragment = router.fragment
         this.context = router.context

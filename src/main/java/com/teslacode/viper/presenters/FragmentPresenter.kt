@@ -2,7 +2,7 @@ package com.teslacode.viper.presenters
 
 import android.content.Intent
 import android.os.Bundle
-import com.teslacode.viper.contracts.BaseContract.Router
+import com.teslacode.viper.contracts.Contract.Router
 import com.teslacode.viper.contracts.FragmentContract.*
 
 /**
@@ -10,7 +10,7 @@ import com.teslacode.viper.contracts.FragmentContract.*
  */
 
 open class FragmentPresenter<V : ViewBehavior, I : Interactor, R : Router>(view: V?, interactor: I? = null, router: R? = null) :
-        BasePresenter<V, I, R>(view, interactor, router), Presenter, InteractorOutput {
+        ViperPresenter<V, I, R>(view, interactor, router), Presenter, InteractorOutput {
 
     // region Presenter
 

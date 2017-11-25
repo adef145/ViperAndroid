@@ -2,7 +2,7 @@ package com.teslacode.viper.contracts
 
 import android.content.Intent
 import android.os.Bundle
-import com.teslacode.viper.fragments.BaseFragment
+import com.teslacode.viper.fragments.ViperFragment
 
 /**
  * Created by adefruandta on 8/13/17.
@@ -10,7 +10,7 @@ import com.teslacode.viper.fragments.BaseFragment
 
 interface ActivityContract {
 
-    interface ViewBehavior : BaseContract.ViewBehavior {
+    interface ViewBehavior : Contract.ViewBehavior {
 
         fun showToolbar()
 
@@ -27,13 +27,13 @@ interface ActivityContract {
         fun hideFragment()
     }
 
-    interface Presenter : BaseContract.Presenter {
+    interface Presenter : Contract.Presenter {
 
         fun onCreate(extras: Bundle?, savedInstanceState: Bundle?)
 
         fun onCreateFragment(hasFragment: Boolean, savedInstanceState: Bundle?)
 
-        fun <F : BaseFragment<*>> onFragmentCreated(fragment: F?)
+        fun <F : ViperFragment<*>> onFragmentCreated(fragment: F?)
 
         fun onPostCreate()
 
@@ -48,7 +48,7 @@ interface ActivityContract {
         fun savedInstanceState(outState: Bundle?)
     }
 
-    interface Interactor : BaseContract.Interactor {
+    interface Interactor : Contract.Interactor {
 
         fun onCreate(extras: Bundle?, savedInstanceState: Bundle?)
 
@@ -67,5 +67,5 @@ interface ActivityContract {
         fun savedInstanceState(outState: Bundle?)
     }
 
-    interface InteractorOutput : BaseContract.InteractorOutput
+    interface InteractorOutput : Contract.InteractorOutput
 }

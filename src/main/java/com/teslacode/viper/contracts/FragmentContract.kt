@@ -7,9 +7,9 @@ import android.os.Bundle
  * Created by adefruandta on 8/8/17.
  */
 
-interface FragmentContract : BaseContract {
+interface FragmentContract : Contract {
 
-    interface ViewBehavior : BaseContract.ViewBehavior {
+    interface ViewBehavior : Contract.ViewBehavior {
 
         fun setTitle(title: String?)
 
@@ -18,7 +18,7 @@ interface FragmentContract : BaseContract {
         fun finishActivity()
     }
 
-    interface Presenter : BaseContract.Presenter {
+    interface Presenter : Contract.Presenter {
 
         fun onCreate(extras: Bundle?, savedInstanceState: Bundle?)
 
@@ -35,7 +35,7 @@ interface FragmentContract : BaseContract {
         fun savedInstanceState(outState: Bundle?)
     }
 
-    interface Interactor : BaseContract.Interactor {
+    interface Interactor : Contract.Interactor {
 
         fun onCreate(extras: Bundle?, savedInstanceState: Bundle?)
 
@@ -52,7 +52,7 @@ interface FragmentContract : BaseContract {
         fun onSavedInstanceState(outState: Bundle?)
     }
 
-    interface InteractorOutput : BaseContract.InteractorOutput {
+    interface InteractorOutput : Contract.InteractorOutput {
 
         fun finishActivity()
     }

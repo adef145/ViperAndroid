@@ -4,17 +4,17 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
-import com.teslacode.viper.contracts.BaseContract.Router
+import com.teslacode.viper.contracts.Contract.Router
 import com.teslacode.viper.contracts.DialogFragmentContract.*
 import com.teslacode.viper.interactors.DialogFragmentInteractor
 import com.teslacode.viper.presenters.DialogFragmentPresenter
-import com.teslacode.viper.routers.BaseRouter
+import com.teslacode.viper.routers.ViperRouter
 
 /**
  * Created by adefruandta on 8/15/17.
  */
 
-open class BaseDialogFragment<T : Presenter> : DialogFragment(), ViewBehavior {
+open class ViperDialogFragment<T : Presenter> : DialogFragment(), ViewBehavior {
 
     // region Attributes
 
@@ -65,7 +65,7 @@ open class BaseDialogFragment<T : Presenter> : DialogFragment(), ViewBehavior {
 
     @Suppress("UNCHECKED_CAST")
     open fun onCreatePresenter(savedInstanceState: Bundle?): T {
-        return DialogFragmentPresenter<ViewBehavior, Interactor, Router>(this, DialogFragmentInteractor<InteractorOutput>(), BaseRouter(this)) as T
+        return DialogFragmentPresenter<ViewBehavior, Interactor, Router>(this, DialogFragmentInteractor<InteractorOutput>(), ViperRouter(this)) as T
     }
 
     open fun onPresenterCreated(presenter: T, savedInstanceState: Bundle?) {
