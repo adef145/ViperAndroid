@@ -73,8 +73,8 @@ open class ActivityPresenter<V : ViewBehavior, I : Interactor, R : Router>(view:
         this.interactor?.onActivityResult(requestCode, resultCode, data)
     }
 
-    override fun savedInstanceState(outState: Bundle?) {
-        this.interactor?.savedInstanceState(outState)
+    override fun onSavedInstanceState(outState: Bundle?) {
+        this.interactor?.onSavedInstanceState(outState)
     }
 
     // endregion

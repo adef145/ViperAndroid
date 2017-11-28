@@ -45,7 +45,7 @@ interface ActivityContract {
 
         fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
 
-        fun savedInstanceState(outState: Bundle?)
+        fun onSavedInstanceState(outState: Bundle?)
     }
 
     interface Interactor : Contract.Interactor {
@@ -64,7 +64,7 @@ interface ActivityContract {
 
         fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
 
-        fun savedInstanceState(outState: Bundle?)
+        fun onSavedInstanceState(outState: Bundle?)
     }
 
     interface InteractorOutput : Contract.InteractorOutput

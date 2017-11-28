@@ -79,7 +79,7 @@ abstract class ViperFragment<T : Presenter> : Fragment(), ViewBehavior {
 
     override fun onSaveInstanceState(outState: Bundle?) {
         super.onSaveInstanceState(outState)
-        presenter?.savedInstanceState(outState)
+        presenter?.onSavedInstanceState(outState)
     }
 
     override fun onDestroy() {

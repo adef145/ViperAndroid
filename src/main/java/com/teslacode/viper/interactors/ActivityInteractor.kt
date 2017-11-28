@@ -42,7 +42,7 @@ open class ActivityInteractor<T : InteractorOutput> : ViperInteractor<T>(), Inte
 
     }
 
-    override fun savedInstanceState(outState: Bundle?) {
+    override fun onSavedInstanceState(outState: Bundle?) {
 
     }
 

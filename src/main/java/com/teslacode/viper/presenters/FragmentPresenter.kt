@@ -34,7 +34,7 @@ open class FragmentPresenter<V : ViewBehavior, I : Interactor, R : Router>(view:
         interactor?.onActivityResult(requestCode, resultCode, data)
     }
 
-    override fun savedInstanceState(outState: Bundle?) {
+    override fun onSavedInstanceState(outState: Bundle?) {
         interactor?.onSavedInstanceState(outState)
     }
 

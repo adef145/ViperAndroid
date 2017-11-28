@@ -32,7 +32,7 @@ interface FragmentContract : Contract {
 
         fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
 
-        fun savedInstanceState(outState: Bundle?)
+        fun onSavedInstanceState(outState: Bundle?)
     }
 
     interface Interactor : Contract.Interactor {
