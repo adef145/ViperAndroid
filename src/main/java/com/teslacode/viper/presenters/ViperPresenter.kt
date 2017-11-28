@@ -1,6 +1,6 @@
 package com.teslacode.viper.presenters
 
-import com.teslacode.viper.contracts.Contract.*
+import com.teslacode.viper.contracts.ViperContract.*
 
 /**
  * Created by adefruandta on 8/3/17.

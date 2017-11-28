@@ -2,14 +2,14 @@ package com.teslacode.viper.presenters
 
 import android.content.Intent
 import android.os.Bundle
-import com.teslacode.viper.contracts.Contract.Router
-import com.teslacode.viper.contracts.FragmentContract.*
+import com.teslacode.viper.contracts.ViperContract.Router
+import com.teslacode.viper.contracts.ViperFragmentContract.*
 
 /**
  * Created by adefruandta on 8/8/17.
  */
 
-open class FragmentPresenter<V : ViewBehavior, I : Interactor, R : Router>(view: V?, interactor: I? = null, router: R? = null) :
+open class ViperFragmentPresenter<V : ViewBehavior, I : Interactor, R : Router>(view: V?, interactor: I? = null, router: R? = null) :
         ViperPresenter<V, I, R>(view, interactor, router), Presenter, InteractorOutput {
 
     // region Presenter

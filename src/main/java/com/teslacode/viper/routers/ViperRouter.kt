@@ -5,7 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import com.teslacode.viper.contracts.Contract.Router
+import com.teslacode.viper.contracts.ViperContract.Router
 
 /**
  * Created by adefruandta on 8/7/17.

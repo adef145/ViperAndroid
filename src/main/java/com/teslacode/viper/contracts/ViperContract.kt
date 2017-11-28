@@ -7,7 +7,7 @@ import android.os.Bundle
  * Created by adefruandta on 8/7/17.
  */
 
-interface Contract {
+interface ViperContract {
 
     interface ViewBehavior
 

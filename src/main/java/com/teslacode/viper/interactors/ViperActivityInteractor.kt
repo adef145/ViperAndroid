@@ -2,14 +2,14 @@ package com.teslacode.viper.interactors
 
 import android.content.Intent
 import android.os.Bundle
-import com.teslacode.viper.contracts.ActivityContract.Interactor
-import com.teslacode.viper.contracts.ActivityContract.InteractorOutput
+import com.teslacode.viper.contracts.ViperActivityContract.Interactor
+import com.teslacode.viper.contracts.ViperActivityContract.InteractorOutput
 
 /**
  * Created by adefruandta on 8/13/17.
  */
 
-open class ActivityInteractor<T : InteractorOutput> : ViperInteractor<T>(), Interactor {
+open class ViperActivityInteractor<T : InteractorOutput> : ViperInteractor<T>(), Interactor {
 
 
     // region Interactor

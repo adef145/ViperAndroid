@@ -4,10 +4,10 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
-import com.teslacode.viper.contracts.Contract.Router
-import com.teslacode.viper.contracts.DialogFragmentContract.*
-import com.teslacode.viper.interactors.DialogFragmentInteractor
-import com.teslacode.viper.presenters.DialogFragmentPresenter
+import com.teslacode.viper.contracts.ViperContract.Router
+import com.teslacode.viper.contracts.ViperDialogFragmentContract.*
+import com.teslacode.viper.interactors.ViperDialogFragmentInteractor
+import com.teslacode.viper.presenters.ViperDialogFragmentPresenter
 import com.teslacode.viper.routers.ViperRouter
 
 /**
@@ -65,7 +65,7 @@ open class ViperDialogFragment<T : Presenter> : DialogFragment(), ViewBehavior {
 
     @Suppress("UNCHECKED_CAST")
     open fun onCreatePresenter(savedInstanceState: Bundle?): T {
-        return DialogFragmentPresenter<ViewBehavior, Interactor, Router>(this, DialogFragmentInteractor<InteractorOutput>(), ViperRouter(this)) as T
+        return ViperDialogFragmentPresenter<ViewBehavior, Interactor, Router>(this, ViperDialogFragmentInteractor<InteractorOutput>(), ViperRouter(this)) as T
     }
 
     open fun onPresenterCreated(presenter: T, savedInstanceState: Bundle?) {

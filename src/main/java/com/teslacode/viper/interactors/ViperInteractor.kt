@@ -1,7 +1,7 @@
 package com.teslacode.viper.interactors
 
-import com.teslacode.viper.contracts.Contract.Interactor
-import com.teslacode.viper.contracts.Contract.InteractorOutput
+import com.teslacode.viper.contracts.ViperContract.Interactor
+import com.teslacode.viper.contracts.ViperContract.InteractorOutput
 
 /**
  * Created by adefruandta on 8/3/17.

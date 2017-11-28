@@ -2,13 +2,13 @@ package com.teslacode.viper.interactors
 
 import android.content.Intent
 import android.os.Bundle
-import com.teslacode.viper.contracts.FragmentContract
+import com.teslacode.viper.contracts.ViperFragmentContract
 
 /**
  * Created by adefruandta on 8/8/17.
  */
 
-open class FragmentInteractor<T : FragmentContract.InteractorOutput> : ViperInteractor<T>(), FragmentContract.Interactor {
+open class ViperFragmentInteractor<T : ViperFragmentContract.InteractorOutput> : ViperInteractor<T>(), ViperFragmentContract.Interactor {
 
     // region Interactor
 

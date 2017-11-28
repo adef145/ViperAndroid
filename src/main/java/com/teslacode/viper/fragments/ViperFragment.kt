@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
-import com.teslacode.viper.contracts.Contract.Router
-import com.teslacode.viper.contracts.FragmentContract.*
-import com.teslacode.viper.interactors.FragmentInteractor
-import com.teslacode.viper.presenters.FragmentPresenter
+import com.teslacode.viper.contracts.ViperContract.Router
+import com.teslacode.viper.contracts.ViperFragmentContract.*
+import com.teslacode.viper.interactors.ViperFragmentInteractor
+import com.teslacode.viper.presenters.ViperFragmentPresenter
 import com.teslacode.viper.routers.ViperRouter
 
 /**
@@ -94,7 +94,7 @@ abstract class ViperFragment<T : Presenter> : Fragment(), ViewBehavior {
 
     @Suppress("UNCHECKED_CAST")
     open fun onCreatePresenter(savedInstanceState: Bundle?): T {
-        return FragmentPresenter<ViewBehavior, Interactor, Router>(this, FragmentInteractor<InteractorOutput>(), ViperRouter(this)) as T
+        return ViperFragmentPresenter<ViewBehavior, Interactor, Router>(this, ViperFragmentInteractor<InteractorOutput>(), ViperRouter(this)) as T
     }
 
     open fun onPresenterCreated(presenter: T, savedInstanceState: Bundle?) {

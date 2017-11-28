@@ -8,19 +8,19 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import com.teslacode.viper.R
-import com.teslacode.viper.contracts.Contract.Router
-import com.teslacode.viper.contracts.DrawerActivityContract.*
+import com.teslacode.viper.contracts.ViperContract.Router
+import com.teslacode.viper.contracts.ViperDrawerActivityContract.*
 import com.teslacode.viper.fragments.ViperFragment
-import com.teslacode.viper.interactors.DrawerActivityInteractor
+import com.teslacode.viper.interactors.ViperDrawerActivityInteractor
 import com.teslacode.viper.others.bindView
-import com.teslacode.viper.presenters.DrawerActivityPresenter
+import com.teslacode.viper.presenters.ViperDrawerActivityPresenter
 import com.teslacode.viper.routers.ViperRouter
 
 /**
  * Created by adefruandta on 8/19/17.
  */
 
-abstract class DrawerActivity<F : ViperFragment<*>, P : Presenter> : ViperActivity<F, P>(), ViewBehavior {
+abstract class ViperDrawerActivity<F : ViperFragment<*>, P : Presenter> : ViperActivity<F, P>(), ViewBehavior {
 
     // region Attributes
 
@@ -93,7 +93,7 @@ abstract class DrawerActivity<F : ViperFragment<*>, P : Presenter> : ViperActivi
     // region Base Activity
 
     @Suppress("UNCHECKED_CAST")
-    override fun onCreatePresenter(savedInstanceState: Bundle?): P? = DrawerActivityPresenter<ViewBehavior, Interactor, Router>(this, DrawerActivityInteractor<InteractorOutput>(), ViperRouter(this)) as P
+    override fun onCreatePresenter(savedInstanceState: Bundle?): P? = ViperDrawerActivityPresenter<ViewBehavior, Interactor, Router>(this, ViperDrawerActivityInteractor<InteractorOutput>(), ViperRouter(this)) as P
 
     // endregion
 

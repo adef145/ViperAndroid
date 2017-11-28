@@ -8,9 +8,9 @@ import com.teslacode.viper.fragments.ViperFragment
  * Created by adefruandta on 8/13/17.
  */
 
-interface ActivityContract {
+interface ViperActivityContract {
 
-    interface ViewBehavior : Contract.ViewBehavior {
+    interface ViewBehavior : ViperContract.ViewBehavior {
 
         fun showToolbar()
 
@@ -27,7 +27,7 @@ interface ActivityContract {
         fun hideFragment()
     }
 
-    interface Presenter : Contract.Presenter {
+    interface Presenter : ViperContract.Presenter {
 
         fun onCreate(extras: Bundle?, savedInstanceState: Bundle?)
 
@@ -48,7 +48,7 @@ interface ActivityContract {
         fun onSavedInstanceState(outState: Bundle?)
     }
 
-    interface Interactor : Contract.Interactor {
+    interface Interactor : ViperContract.Interactor {
 
         fun onCreate(extras: Bundle?, savedInstanceState: Bundle?)
 
@@ -67,5 +67,5 @@ interface ActivityContract {
         fun onSavedInstanceState(outState: Bundle?)
     }
 
-    interface InteractorOutput : Contract.InteractorOutput
+    interface InteractorOutput : ViperContract.InteractorOutput
 }

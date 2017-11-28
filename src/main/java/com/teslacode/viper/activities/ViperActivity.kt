@@ -7,12 +7,12 @@ import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import com.teslacode.viper.R
-import com.teslacode.viper.contracts.ActivityContract.*
-import com.teslacode.viper.contracts.Contract.Router
+import com.teslacode.viper.contracts.ViperActivityContract.*
+import com.teslacode.viper.contracts.ViperContract.Router
 import com.teslacode.viper.fragments.ViperFragment
-import com.teslacode.viper.interactors.ActivityInteractor
+import com.teslacode.viper.interactors.ViperActivityInteractor
 import com.teslacode.viper.others.bindView
-import com.teslacode.viper.presenters.ActivityPresenter
+import com.teslacode.viper.presenters.ViperActivityPresenter
 import com.teslacode.viper.routers.ViperRouter
 
 /**
@@ -100,7 +100,7 @@ open class ViperActivity<F : ViperFragment<*>, P : Presenter> : AppCompatActivit
     }
 
     @Suppress("UNCHECKED_CAST")
-    open fun onCreatePresenter(savedInstanceState: Bundle?): P? = ActivityPresenter<ViewBehavior, Interactor, Router>(this, ActivityInteractor<InteractorOutput>(), ViperRouter(this)) as P
+    open fun onCreatePresenter(savedInstanceState: Bundle?): P? = ViperActivityPresenter<ViewBehavior, Interactor, Router>(this, ViperActivityInteractor<InteractorOutput>(), ViperRouter(this)) as P
 
     open fun onPresenterCreated(presenter: P?, savedInstanceState: Bundle?) {
         this.presenter = presenter
