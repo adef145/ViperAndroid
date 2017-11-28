@@ -77,6 +77,11 @@ open class ViperActivity<F : ViperFragment<*>, P : Presenter> : AppCompatActivit
         presenter?.onStop()
     }
 
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        presenter?.onSavedInstanceState(outState)
+    }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         presenter?.onActivityResult(requestCode, resultCode, data)
