@@ -10,7 +10,7 @@ interface ViperDialogFragmentContract {
 
     interface ViewBehavior : ViperFragmentContract.ViewBehavior {
 
-        fun hide()
+        fun dismiss()
     }
 
     interface Presenter : ViperFragmentContract.Presenter {
@@ -22,6 +22,6 @@ interface ViperDialogFragmentContract {
 
     interface InteractorOutput : ViperFragmentContract.InteractorOutput {
 
-        fun hide()
+        fun dismiss()
     }
 }

@@ -112,6 +112,10 @@ open class ViperActivity<F : ViperFragment<*>, P : Presenter> : AppCompatActivit
 
     // region View Behavior
 
+    override fun setTitle(title: String?) {
+        this.title = title
+    }
+
     override fun showToolbar() {
         this.supportActionBar?.show()
         invalidateOptionsMenu()

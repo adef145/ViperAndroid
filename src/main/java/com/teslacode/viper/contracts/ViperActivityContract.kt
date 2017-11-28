@@ -12,6 +12,10 @@ interface ViperActivityContract {
 
     interface ViewBehavior : ViperContract.ViewBehavior {
 
+        fun setTitle(title: String?)
+
+        fun setTitle(titleResId: Int)
+
         fun showToolbar()
 
         fun hideToolbar()

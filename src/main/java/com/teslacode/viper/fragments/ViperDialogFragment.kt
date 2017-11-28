@@ -4,6 +4,9 @@ import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import com.teslacode.viper.contracts.ViperContract.Router
 import com.teslacode.viper.contracts.ViperDialogFragmentContract.*
 import com.teslacode.viper.interactors.ViperDialogFragmentInteractor
@@ -18,7 +21,9 @@ open class ViperDialogFragment<T : Presenter> : DialogFragment(), ViewBehavior {
 
     // region Attributes
 
-    internal var presenter: T? = null
+    protected var presenter: T? = null
+
+    protected var layoutResId: Int? = null
 
     // endregion
 
@@ -27,6 +32,19 @@ open class ViperDialogFragment<T : Presenter> : DialogFragment(), ViewBehavior {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         onPresenterCreated(onCreatePresenter(savedInstanceState), savedInstanceState)
+    }
+
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        if (layoutResId != null) {
+            return inflater?.inflate(layoutResId!!, container, false)
+        }
+
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        presenter?.onViewCreated()
     }
 
     override fun onStart() {
@@ -42,6 +60,11 @@ open class ViperDialogFragment<T : Presenter> : DialogFragment(), ViewBehavior {
     override fun onStop() {
         super.onStop()
         presenter?.onStop()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        super.onSaveInstanceState(outState)
+        presenter?.onSavedInstanceState(outState)
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -86,10 +109,6 @@ open class ViperDialogFragment<T : Presenter> : DialogFragment(), ViewBehavior {
     }
 
     override fun finishActivity() = activity.finish()
-
-    override fun hide() {
-        dismiss()
-    }
 
     // endregion
 }

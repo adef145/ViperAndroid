@@ -20,8 +20,8 @@ open class ViperDialogFragmentPresenter<V : ViewBehavior, I : Interactor, R : Ro
 
     // region Interactor Output
 
-    override fun hide() {
-        view?.hide()
+    override fun dismiss() {
+        view?.dismiss()
     }
 
     // endregion
