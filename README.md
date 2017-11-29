@@ -1,6 +1,21 @@
 # ViperAndroid
 Viper framework for android
 
+## Download
+```gradle
+repositories {
+    maven {
+        url 'https://dl.bintray.com/adef145/teslacode/'
+    }
+}
+
+...
+
+dependencies {
+    compile 'com.teslacode.viper:viper:0.5.1'
+}
+```
+
 In this library the presenter & interactor implement the base lifecycle of Activity or Fragment. For more detail, see below.
 
 ## [Contract][1]
@@ -162,21 +177,6 @@ Basically, ViperActivity will inherit AppCompatActivity. Custom inherit in Viper
 ##### Inherit functions
 * open `onCreatePresenter: ? extends ViperActivityContract.Presenter?`. Override this function if only have custom presenter.
 * open `onPresenterCreated(presenter: ? extends ViperActivityContract.Presenter?)`. This function called after onCreatePresenter.
-
-## Download
-```gradle
-repositories {
-    maven {
-        url 'https://dl.bintray.com/adef145/teslacode/'
-    }
-}
-
-...
-
-dependencies {
-    compile 'com.teslacode.viper:viper:0.5.1'
-}
-```
 
 [1]: https://github.com/teslacode/ViperAndroid/wiki/Contract
 [2]: https://github.com/teslacode/ViperAndroid/wiki/Activity
