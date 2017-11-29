@@ -3,7 +3,7 @@ Viper framework for android
 
 In this library the presenter & interactor implement the base lifecycle of Activity or Fragment. For more detail, see below.
 
-## Contract
+## [Contract][1]
 
 ### ViperContract
 * ViewBehavior
@@ -106,7 +106,7 @@ In this library the presenter & interactor implement the base lifecycle of Activ
 * InteractorOutput extends ViperContract.InteractorOutput
     * `dismiss`
 
-## Activity
+## [Activity][2]
 
 ### ViperActivity
 Basically, ViperActivity will inherit AppCompatActivity. Custom inherit in ViperActivity see below.
@@ -138,7 +138,7 @@ Basically, ViperActivity will inherit AppCompatActivity. Custom inherit in Viper
 * `isDrawerOpen`. Check is drawer open or not.
 * open `onCreateDrawerMenu(inflater: LayoutInflater?, navigationView: NavigationView)`. Override this function for custom the navigation view. Either inflate or set menu id.
 
-## Fragment
+## [Fragment][3]
 
 ### ViperFragment
 
@@ -177,3 +177,7 @@ dependencies {
     compile 'com.teslacode.viper:viper:0.5.1'
 }
 ```
+
+[1]: https://github.com/teslacode/ViperAndroid/wiki/Contract
+[2]: https://github.com/teslacode/ViperAndroid/wiki/Activity
+[3]: https://github.com/teslacode/ViperAndroid/wiki/Fragment
