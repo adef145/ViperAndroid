@@ -12,7 +12,7 @@ repositories {
 ...
 
 dependencies {
-    compile 'com.teslacode.viper:viper:0.5.1'
+    compile 'com.teslacode.viper:viper:0.5.2'
 }
 ```
 
