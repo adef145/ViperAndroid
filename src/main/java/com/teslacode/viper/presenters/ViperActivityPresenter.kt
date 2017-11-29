@@ -39,7 +39,9 @@ open class ViperActivityPresenter<V : ViewBehavior, I : Interactor, R : Router>(
     }
 
     override fun onCreateFragment(hasFragment: Boolean, savedInstanceState: Bundle?) {
-        if (!hasFragment) {
+        if (hasFragment) {
+            this.view?.restoreFragment(savedInstanceState)
+        } else {
             this.view?.createFragment(savedInstanceState)
         }
     }

@@ -97,6 +97,14 @@ open class ViperActivity<F : ViperFragment<*>, P : Presenter> : AppCompatActivit
 
     // region Base Activity
 
+    open fun onRestoreFragment(savedInstanceState: Bundle?): F? {
+        return supportFragmentManager.findFragmentById(containerResId) as F?
+    }
+
+    open fun onFragmentRestored(fragment: F?) {
+        this.fragment = fragment
+    }
+
     open fun onCreateFragment(savedInstanceState: Bundle?): F? = null
 
     open fun onFragmentCreated(fragment: F?) {
@@ -139,6 +147,10 @@ open class ViperActivity<F : ViperFragment<*>, P : Presenter> : AppCompatActivit
     override fun hideBackButton() {
         this.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         invalidateOptionsMenu()
+    }
+
+    override fun restoreFragment(savedInstanceState: Bundle?) {
+        onFragmentRestored(onRestoreFragment(savedInstanceState))
     }
 
     override fun createFragment(savedInstanceState: Bundle?) {

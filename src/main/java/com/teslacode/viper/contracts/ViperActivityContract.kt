@@ -24,6 +24,8 @@ interface ViperActivityContract {
 
         fun hideBackButton()
 
+        fun restoreFragment(savedInstanceState: Bundle?)
+
         fun createFragment(savedInstanceState: Bundle?)
 
         fun showFragment()
