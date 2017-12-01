@@ -46,17 +46,17 @@ android {
 }
 
 ext {
-    bintrayRepo = 'teslacode'
+    bintrayRepo = 'maven'
     bintrayName = 'viper'
 
-    publishedGroupId = 'com.teslacode.viper'
+    publishedGroupId = 'com.adefruandta.viper'
     libraryName = 'Viper'
     artifact = 'viper'
 
     libraryDescription = 'Viper framework for android'
 
-    siteUrl = 'https://github.com/teslacode/ViperAndroid'
-    gitUrl = 'https://github.com/teslacode/ViperAndroid.git'
+    siteUrl = 'https://github.com/adef145/ViperAndroid'
+    gitUrl = 'https://github.com/adef145/ViperAndroid.git'
 
     libraryVersion = '0.5.2'
 
@@ -91,5 +91,5 @@ dependencies {
 }
 
 // Place it at the end of the file
-apply from: 'https://raw.githubusercontent.com/teslacode/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/teslacode/JCenter/master/bintrayv1.gradle'
+apply from: 'https://raw.githubusercontent.com/adef145/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/adef145/JCenter/master/bintrayv1.gradle'

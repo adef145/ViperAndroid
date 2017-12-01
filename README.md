@@ -5,14 +5,14 @@ Viper framework for android
 ```gradle
 repositories {
     maven {
-        url 'https://dl.bintray.com/adef145/teslacode/'
+        url 'https://dl.bintray.com/adef145/maven/'
     }
 }
 
 ...
 
 dependencies {
-    compile 'com.teslacode.viper:viper:0.5.2'
+    compile 'com.adefruandta.viper:viper:0.5.2'
 }
 ```
 
@@ -178,6 +178,6 @@ Basically, ViperActivity will inherit AppCompatActivity. Custom inherit in Viper
 * open `onCreatePresenter: ? extends ViperActivityContract.Presenter?`. Override this function if only have custom presenter.
 * open `onPresenterCreated(presenter: ? extends ViperActivityContract.Presenter?)`. This function called after onCreatePresenter.
 
-[1]: https://github.com/teslacode/ViperAndroid/wiki/Contract
-[2]: https://github.com/teslacode/ViperAndroid/wiki/Activity
-[3]: https://github.com/teslacode/ViperAndroid/wiki/Fragment
+[1]: https://github.com/adef145/ViperAndroid/wiki/Contract
+[2]: https://github.com/adef145/ViperAndroid/wiki/Activity
+[3]: https://github.com/adef145/ViperAndroid/wiki/Fragment
