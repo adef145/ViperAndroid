@@ -12,13 +12,13 @@ repositories {
 ...
 
 dependencies {
-    compile 'com.adefruandta.viper:viper:0.1.0'
+    compile 'com.adefruandta.viper:viper:0.2.0'
 }
 ```
 
 In this library the presenter & interactor implement the base lifecycle of Activity or Fragment. For more detail, see below.
 
-## [Contract][1]
+## [Contract]
 
 ### ViperContract
 * ViewBehavior
@@ -33,9 +33,6 @@ In this library the presenter & interactor implement the base lifecycle of Activ
 * InteractorOutput
 
 * Router
-    * `startActivity(intent: Intent)`
-    * `startActivity(intent: Intent, options: Bundle?)`
-    * `startActivity(intent: Intent, requestCode: Int)`
     * `unregister`. Called when view destroyed.
     
 ### ViperActivityContract
@@ -46,14 +43,9 @@ In this library the presenter & interactor implement the base lifecycle of Activ
     * `hideToolbar`. Hiding action bar.
     * `showBackButton`. Showing back button / home button.
     * `hideBackButton`. Hiding back button / home button.
-    * `restoreFragment(savedInstanceState: Bundle?)`. This function called after presenter decide for restore fragment because `hasFragment == true`.
-    * `createFragment(savedInstanceState: Bundle?)`. This function called after presenter decide for create fragment because `hasFragment == false`.
-    * `showFragment`. Show fragment with set `visible` the container.
-    * `hideFragment`. Hide fragment with set `gone` the container.
 
 * Presenter extends ViperContract.Presenter
     * `onCreate(extras: Bundle?, savedInstanceState: Bundle?)`. Called when presenter created.
-    * `onCreateFragment(hasFragment: Boolean, savedInstanceState: Bundle?)`. Called when activity start to create fragment. And the default presenter will check the activity has fragment or not. If has fragment presenter decide to `view?.restoreFragment(savedInstanceState)` and if not presenter decide to `view?.createFragment(savedInstanceState)`.
     * `onPostCreate`. Called when the activity called `onPostCreate`.
     * `onStart`. Called when the activity called `onStart`.
     * `onResume`. Called when the activity called `onResume`.
@@ -121,7 +113,7 @@ In this library the presenter & interactor implement the base lifecycle of Activ
 * InteractorOutput extends ViperContract.InteractorOutput
     * `dismiss`
 
-## [Activity][2]
+## [Activity]
 
 ### ViperActivity
 Basically, ViperActivity will inherit AppCompatActivity. Custom inherit in ViperActivity see below.
@@ -153,7 +145,7 @@ Basically, ViperActivity will inherit AppCompatActivity. Custom inherit in Viper
 * `isDrawerOpen`. Check is drawer open or not.
 * open `onCreateDrawerMenu(inflater: LayoutInflater?, navigationView: NavigationView)`. Override this function for custom the navigation view. Either inflate or set menu id.
 
-## [Fragment][3]
+## [Fragment]
 
 ### ViperFragment
 
@@ -178,6 +170,9 @@ Basically, ViperActivity will inherit AppCompatActivity. Custom inherit in Viper
 * open `onCreatePresenter: ? extends ViperActivityContract.Presenter?`. Override this function if only have custom presenter.
 * open `onPresenterCreated(presenter: ? extends ViperActivityContract.Presenter?)`. This function called after onCreatePresenter.
 
-[1]: https://github.com/adef145/ViperAndroid/wiki/Contract
-[2]: https://github.com/adef145/ViperAndroid/wiki/Activity
-[3]: https://github.com/adef145/ViperAndroid/wiki/Fragment
+## ViperRouter
+
+##### Inherit functions
+* `startActivity(intent: Intent)`
+* `startActivity(intent: Intent, options: Bundle?)`
+* `startActivity(intent: Intent, requestCode: Int)`
