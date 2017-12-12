@@ -2,16 +2,15 @@ package com.adefruandta.viper.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import android.view.View
 import android.view.ViewGroup
 import com.adefruandta.viper.R
 import com.adefruandta.viper.contracts.ViperActivityContract.*
 import com.adefruandta.viper.contracts.ViperContract.Router
-import com.adefruandta.viper.fragments.ViperFragment
 import com.adefruandta.viper.interactors.ViperActivityInteractor
-import com.adefruandta.viper.others.bindView
+import com.adefruandta.viper.others.bindOptionalView
 import com.adefruandta.viper.presenters.ViperActivityPresenter
 import com.adefruandta.viper.routers.ViperRouter
 
@@ -19,7 +18,7 @@ import com.adefruandta.viper.routers.ViperRouter
  * Created by adefruandta on 8/3/17.
  */
 
-open class ViperActivity<F : ViperFragment<*>, P : Presenter> : AppCompatActivity(), ViewBehavior {
+open class ViperActivity<P : Presenter> : AppCompatActivity(), ViewBehavior {
 
     // region Attributes
 
@@ -27,16 +26,11 @@ open class ViperActivity<F : ViperFragment<*>, P : Presenter> : AppCompatActivit
 
     protected open var layoutResId: Int = R.layout.activity_base
 
-    protected var fragment: F? = null
+    protected var fragment: Fragment? = null
 
     protected var presenter: P? = null
 
-    protected val container: ViewGroup by bindView(containerResId)
-
-    protected val hasFragment: Boolean
-        get() {
-            return supportFragmentManager.findFragmentById(containerResId) != null
-        }
+    protected val container: ViewGroup? by bindOptionalView(containerResId)
 
     // endregion
 
@@ -46,6 +40,7 @@ open class ViperActivity<F : ViperFragment<*>, P : Presenter> : AppCompatActivit
         super.onCreate(savedInstanceState)
         setContentView(layoutResId)
         onPresenterCreated(onCreatePresenter(savedInstanceState), savedInstanceState)
+        onPrepareFragment(savedInstanceState)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -97,28 +92,39 @@ open class ViperActivity<F : ViperFragment<*>, P : Presenter> : AppCompatActivit
 
     // region Base Activity
 
-    open fun onRestoreFragment(savedInstanceState: Bundle?): F? {
-        return supportFragmentManager.findFragmentById(containerResId) as F?
+    protected open fun onRestoreFragment(savedInstanceState: Bundle?): Fragment? {
+        return supportFragmentManager.findFragmentById(containerResId)
     }
 
-    open fun onFragmentRestored(fragment: F?) {
-        this.fragment = fragment
-    }
+    protected open fun onCreateFragment(savedInstanceState: Bundle?): Fragment? = null
 
-    open fun onCreateFragment(savedInstanceState: Bundle?): F? = null
+    protected open fun onFragmentCreated(fragment: Fragment?) {
+        if (fragment == null) {
+            return
+        }
 
-    open fun onFragmentCreated(fragment: F?) {
-        this.fragment = fragment
-        this.presenter?.onFragmentCreated(this.fragment)
+        supportFragmentManager.beginTransaction().add(containerResId, fragment, null).commit()
     }
 
     @Suppress("UNCHECKED_CAST")
-    open fun onCreatePresenter(savedInstanceState: Bundle?): P? = ViperActivityPresenter<ViewBehavior, Interactor, Router>(this, ViperActivityInteractor<InteractorOutput>(), ViperRouter(this)) as P
+    protected open fun onCreatePresenter(savedInstanceState: Bundle?): P? = ViperActivityPresenter<ViewBehavior, Interactor, Router>(this, ViperActivityInteractor<InteractorOutput>(), ViperRouter(this)) as P
 
-    open fun onPresenterCreated(presenter: P?, savedInstanceState: Bundle?) {
+    protected open fun onPresenterCreated(presenter: P?, savedInstanceState: Bundle?) {
         this.presenter = presenter
         this.presenter?.onCreate(intent.extras, savedInstanceState)
-        this.presenter?.onCreateFragment(hasFragment, savedInstanceState)
+    }
+
+    protected open fun onPrepareFragment(savedInstanceState: Bundle?) {
+        if (container == null) {
+            return
+        }
+
+        this.fragment = onRestoreFragment(savedInstanceState)
+
+        if (this.fragment == null) {
+            this.fragment = onCreateFragment(savedInstanceState)
+            onFragmentCreated(this.fragment)
+        }
     }
 
     // endregion
@@ -147,23 +153,6 @@ open class ViperActivity<F : ViperFragment<*>, P : Presenter> : AppCompatActivit
     override fun hideBackButton() {
         this.supportActionBar?.setDisplayHomeAsUpEnabled(false)
         invalidateOptionsMenu()
-    }
-
-    override fun restoreFragment(savedInstanceState: Bundle?) {
-        onFragmentRestored(onRestoreFragment(savedInstanceState))
-    }
-
-    override fun createFragment(savedInstanceState: Bundle?) {
-        onFragmentCreated(onCreateFragment(savedInstanceState))
-    }
-
-    override fun showFragment() {
-        this.container.visibility = View.VISIBLE
-        supportFragmentManager.beginTransaction().add(containerResId, this.fragment, null).commit()
-    }
-
-    override fun hideFragment() {
-        this.container.visibility = View.GONE
     }
 
     // endregion

@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import com.adefruandta.viper.contracts.ViperActivityContract.*
 import com.adefruandta.viper.contracts.ViperContract.Router
-import com.adefruandta.viper.fragments.ViperFragment
 
 /**
  * Created by adefruandta on 8/13/17.
@@ -36,23 +35,6 @@ open class ViperActivityPresenter<V : ViewBehavior, I : Interactor, R : Router>(
         prepareBackButton(this.showBackButton)
 
         this.interactor?.onCreate(extras, savedInstanceState)
-    }
-
-    override fun onCreateFragment(hasFragment: Boolean, savedInstanceState: Bundle?) {
-        if (hasFragment) {
-            this.view?.restoreFragment(savedInstanceState)
-        } else {
-            this.view?.createFragment(savedInstanceState)
-        }
-    }
-
-    override fun <F : ViperFragment<*>> onFragmentCreated(fragment: F?) {
-        if (fragment != null) {
-            this.view?.showFragment()
-
-        } else {
-            this.view?.hideFragment()
-        }
     }
 
     override fun onPostCreate() {

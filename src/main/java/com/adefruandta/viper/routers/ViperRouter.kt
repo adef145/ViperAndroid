@@ -51,9 +51,9 @@ open class ViperRouter : Router {
 
     // endregion
 
-    // region Router
+    // region Base Router
 
-    override fun startActivity(intent: Intent) {
+    protected open fun startActivity(intent: Intent) {
         if (this.activity != null) {
             this.activity?.startActivity(intent)
             return
@@ -70,7 +70,7 @@ open class ViperRouter : Router {
         }
     }
 
-    override fun startActivity(intent: Intent, options: Bundle?) {
+    protected open fun startActivity(intent: Intent, options: Bundle?) {
         if (this.activity != null) {
             this.activity?.startActivity(intent, options)
             return
@@ -87,7 +87,7 @@ open class ViperRouter : Router {
         }
     }
 
-    override fun startActivityForResult(intent: Intent, requestCode: Int) {
+    protected open fun startActivityForResult(intent: Intent, requestCode: Int) {
         if (this.activity != null) {
             this.activity?.startActivityForResult(intent, requestCode)
             return
@@ -98,6 +98,10 @@ open class ViperRouter : Router {
             return
         }
     }
+
+    // endregion
+
+    // region Router
 
     override fun unregister() {
         this.activity = null

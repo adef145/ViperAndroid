@@ -10,7 +10,6 @@ import android.view.View
 import com.adefruandta.viper.R
 import com.adefruandta.viper.contracts.ViperContract.Router
 import com.adefruandta.viper.contracts.ViperDrawerActivityContract.*
-import com.adefruandta.viper.fragments.ViperFragment
 import com.adefruandta.viper.interactors.ViperDrawerActivityInteractor
 import com.adefruandta.viper.others.bindView
 import com.adefruandta.viper.presenters.ViperDrawerActivityPresenter
@@ -20,7 +19,7 @@ import com.adefruandta.viper.routers.ViperRouter
  * Created by adefruandta on 8/19/17.
  */
 
-abstract class ViperDrawerActivity<F : ViperFragment<*>, P : Presenter> : ViperActivity<F, P>(), ViewBehavior {
+abstract class ViperDrawerActivity<P : Presenter> : ViperActivity<P>(), ViewBehavior {
 
     // region Attributes
 
