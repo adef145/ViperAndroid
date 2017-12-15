@@ -8,9 +8,19 @@ interface ViperContract {
 
     interface ViewBehavior
 
-    interface Presenter {
+    interface Presenter<V : ViewBehavior, I : Interactor, R : Router> {
 
-        fun unregister()
+        var view: V?
+
+        var interactor: I?
+
+        var router: R?
+
+        fun unregister() {
+            this.interactor?.unregister()
+            this.router?.unregister()
+            this.view = null
+        }
     }
 
     interface Interactor {

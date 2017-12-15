@@ -11,9 +11,11 @@ interface ViperDrawerActivityContract {
         fun closeDrawers()
     }
 
-    interface Presenter : ViperActivityContract.Presenter
+    interface Presenter<V : ViewBehavior, I : Interactor, R : ViperContract.Router> : ViperActivityContract.Presenter<V, I, R>
 
     interface Interactor : ViperActivityContract.Interactor
 
     interface InteractorOutput : ViperActivityContract.InteractorOutput
+
+    interface Router : ViperActivityContract.Router
 }

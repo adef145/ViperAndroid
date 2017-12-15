@@ -18,42 +18,69 @@ interface ViperFragmentContract : ViperContract {
         fun finishActivity()
     }
 
-    interface Presenter : ViperContract.Presenter {
+    interface Presenter<V : ViewBehavior, I : Interactor, R : ViperContract.Router> : ViperContract.Presenter<V, I, R> {
 
-        fun onCreate(extras: Bundle?, savedInstanceState: Bundle?)
+        fun onCreate(extras: Bundle?, savedInstanceState: Bundle?) {
+            interactor?.onCreate(extras, savedInstanceState)
+        }
 
-        fun onViewCreated()
+        fun onViewCreated() {
+            interactor?.onViewCreated()
+        }
 
-        fun onStart()
+        fun onStart() {
+            interactor?.onStart()
+        }
 
-        fun onResume()
+        fun onResume() {
+            interactor?.onResume()
+        }
 
-        fun onStop()
+        fun onStop() {
+            interactor?.onStop()
+        }
 
-        fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
+        fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+            interactor?.onActivityResult(requestCode, resultCode, data)
+        }
 
-        fun onSavedInstanceState(outState: Bundle?)
+        fun onSavedInstanceState(outState: Bundle?) {
+            interactor?.onSavedInstanceState(outState)
+        }
     }
 
     interface Interactor : ViperContract.Interactor {
 
-        fun onCreate(extras: Bundle?, savedInstanceState: Bundle?)
+        fun onCreate(extras: Bundle?, savedInstanceState: Bundle?) {
 
-        fun onViewCreated()
+        }
 
-        fun onStart()
+        fun onViewCreated() {
 
-        fun onResume()
+        }
 
-        fun onStop()
+        fun onStart() {
 
-        fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?)
+        }
 
-        fun onSavedInstanceState(outState: Bundle?)
+        fun onResume() {
+
+        }
+
+        fun onStop() {
+
+        }
+
+        fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+
+        }
+
+        fun onSavedInstanceState(outState: Bundle?) {
+
+        }
     }
 
-    interface InteractorOutput : ViperContract.InteractorOutput {
+    interface InteractorOutput : ViperContract.InteractorOutput
 
-        fun finishActivity()
-    }
+    interface Router : ViperContract.Router
 }

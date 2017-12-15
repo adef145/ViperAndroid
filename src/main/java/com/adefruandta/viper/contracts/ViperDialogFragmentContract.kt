@@ -1,7 +1,5 @@
 package com.adefruandta.viper.contracts
 
-import android.app.Dialog
-
 /**
  * Created by adefruandta on 8/16/17.
  */
@@ -13,15 +11,11 @@ interface ViperDialogFragmentContract {
         fun dismiss()
     }
 
-    interface Presenter : ViperFragmentContract.Presenter {
-
-        fun onCreateDialog(): Dialog?
-    }
+    interface Presenter<V : ViewBehavior, I : Interactor, R : ViperContract.Router> : ViperFragmentContract.Presenter<V, I, R>
 
     interface Interactor : ViperFragmentContract.Interactor
 
-    interface InteractorOutput : ViperFragmentContract.InteractorOutput {
+    interface InteractorOutput : ViperFragmentContract.InteractorOutput
 
-        fun dismiss()
-    }
+    interface Router : ViperFragmentContract.Router
 }

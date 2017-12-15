@@ -8,18 +8,15 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import com.adefruandta.viper.R
-import com.adefruandta.viper.contracts.ViperContract.Router
-import com.adefruandta.viper.contracts.ViperDrawerActivityContract.*
-import com.adefruandta.viper.interactors.ViperDrawerActivityInteractor
+import com.adefruandta.viper.contracts.ViperDrawerActivityContract.Presenter
+import com.adefruandta.viper.contracts.ViperDrawerActivityContract.ViewBehavior
 import com.adefruandta.viper.others.bindView
-import com.adefruandta.viper.presenters.ViperDrawerActivityPresenter
-import com.adefruandta.viper.routers.ViperRouter
 
 /**
  * Created by adefruandta on 8/19/17.
  */
 
-abstract class ViperDrawerActivity<P : Presenter> : ViperActivity<P>(), ViewBehavior {
+abstract class ViperDrawerActivity<P : Presenter<*, *, *>> : ViperActivity<P>(), ViewBehavior {
 
     // region Attributes
 
@@ -86,13 +83,6 @@ abstract class ViperDrawerActivity<P : Presenter> : ViperActivity<P>(), ViewBeha
             super.onBackPressed()
         }
     }
-
-    // endregion
-
-    // region Base Activity
-
-    @Suppress("UNCHECKED_CAST")
-    override fun onCreatePresenter(savedInstanceState: Bundle?): P? = ViperDrawerActivityPresenter<ViewBehavior, Interactor, Router>(this, ViperDrawerActivityInteractor<InteractorOutput>(), ViperRouter(this)) as P
 
     // endregion
 

@@ -1,27 +1,23 @@
 package com.adefruandta.viper.fragments
 
-import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.DialogFragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.adefruandta.viper.contracts.ViperContract.Router
-import com.adefruandta.viper.contracts.ViperDialogFragmentContract.*
-import com.adefruandta.viper.interactors.ViperDialogFragmentInteractor
-import com.adefruandta.viper.presenters.ViperDialogFragmentPresenter
-import com.adefruandta.viper.routers.ViperRouter
+import com.adefruandta.viper.contracts.ViperDialogFragmentContract.Presenter
+import com.adefruandta.viper.contracts.ViperDialogFragmentContract.ViewBehavior
 
 /**
  * Created by adefruandta on 8/15/17.
  */
 
-open class ViperDialogFragment<T : Presenter> : DialogFragment(), ViewBehavior {
+open class ViperDialogFragment<P : Presenter<*, *, *>> : DialogFragment(), ViewBehavior {
 
     // region Attributes
 
-    protected var presenter: T? = null
+    protected var presenter: P? = null
 
     protected var layoutResId: Int? = null
 
@@ -67,10 +63,6 @@ open class ViperDialogFragment<T : Presenter> : DialogFragment(), ViewBehavior {
         presenter?.onSavedInstanceState(outState)
     }
 
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        return presenter?.onCreateDialog() ?: super.onCreateDialog(savedInstanceState)
-    }
-
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         presenter?.onActivityResult(requestCode, resultCode, data)
@@ -87,11 +79,9 @@ open class ViperDialogFragment<T : Presenter> : DialogFragment(), ViewBehavior {
     // region Base Fragment
 
     @Suppress("UNCHECKED_CAST")
-    open fun onCreatePresenter(savedInstanceState: Bundle?): T {
-        return ViperDialogFragmentPresenter<ViewBehavior, Interactor, Router>(this, ViperDialogFragmentInteractor<InteractorOutput>(), ViperRouter(this)) as T
-    }
+    open fun onCreatePresenter(savedInstanceState: Bundle?): P? = null
 
-    open fun onPresenterCreated(presenter: T, savedInstanceState: Bundle?) {
+    open fun onPresenterCreated(presenter: P?, savedInstanceState: Bundle?) {
         this.presenter = presenter
         this.presenter?.onCreate(arguments, savedInstanceState)
     }

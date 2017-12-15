@@ -7,31 +7,21 @@ import com.adefruandta.viper.contracts.ViperContract.*
  */
 
 open class ViperPresenter<V : ViewBehavior, I : Interactor, R : Router> :
-        Presenter, InteractorOutput {
+        Presenter<V, I, R>, InteractorOutput {
 
-    // region Attributes
+    override var view: V? = null
 
-    protected var view: V? = null
-
-    protected var interactor: I? = null
+    override var interactor: I? = null
         set(value) {
-            value?.setInteractorOutput(this)
             field = value
+            field?.setInteractorOutput(this)
         }
 
-    protected var router: R? = null
+    override var router: R? = null
 
-    // endregion
-
-    constructor(view: V?, interactor: I? = null, router: R? = null) {
+    constructor(view: V, interactor: I? = null, router: R? = null) {
         this.view = view
         this.interactor = interactor
         this.router = router
-    }
-
-    override fun unregister() {
-        interactor?.unregister()
-        router?.unregister()
-        view = null
     }
 }

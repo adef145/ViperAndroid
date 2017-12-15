@@ -4,17 +4,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.*
-import com.adefruandta.viper.contracts.ViperContract.Router
-import com.adefruandta.viper.contracts.ViperFragmentContract.*
-import com.adefruandta.viper.interactors.ViperFragmentInteractor
-import com.adefruandta.viper.presenters.ViperFragmentPresenter
-import com.adefruandta.viper.routers.ViperRouter
+import com.adefruandta.viper.contracts.ViperFragmentContract.Presenter
+import com.adefruandta.viper.contracts.ViperFragmentContract.ViewBehavior
 
 /**
  * Created by adefruandta on 8/3/17.
  */
 
-abstract class ViperFragment<T : Presenter> : Fragment(), ViewBehavior {
+abstract class ViperFragment<P : Presenter<*, *, *>> : Fragment(), ViewBehavior {
 
     // region Attributes
 
@@ -22,9 +19,9 @@ abstract class ViperFragment<T : Presenter> : Fragment(), ViewBehavior {
 
     protected open var attachToRoot: Boolean = false
 
-    protected abstract var layoutResId: Int
+    protected open var layoutResId: Int? = null
 
-    protected var presenter: T? = null
+    protected var presenter: P? = null
 
     protected val hasOptionsMenu: Boolean
         get() {
@@ -44,7 +41,11 @@ abstract class ViperFragment<T : Presenter> : Fragment(), ViewBehavior {
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(this.layoutResId, container, attachToRoot)
+        if (this.layoutResId == null) {
+            return null
+        }
+
+        return inflater?.inflate(this.layoutResId!!, container, attachToRoot)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
@@ -93,11 +94,9 @@ abstract class ViperFragment<T : Presenter> : Fragment(), ViewBehavior {
     // region Base Fragment
 
     @Suppress("UNCHECKED_CAST")
-    open fun onCreatePresenter(savedInstanceState: Bundle?): T {
-        return ViperFragmentPresenter<ViewBehavior, Interactor, Router>(this, ViperFragmentInteractor<InteractorOutput>(), ViperRouter(this)) as T
-    }
+    open fun onCreatePresenter(savedInstanceState: Bundle?): P? = null
 
-    open fun onPresenterCreated(presenter: T, savedInstanceState: Bundle?) {
+    open fun onPresenterCreated(presenter: P?, savedInstanceState: Bundle?) {
         this.presenter = presenter
         this.presenter?.onCreate(arguments, savedInstanceState)
     }

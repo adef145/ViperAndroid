@@ -7,18 +7,15 @@ import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import android.view.ViewGroup
 import com.adefruandta.viper.R
-import com.adefruandta.viper.contracts.ViperActivityContract.*
-import com.adefruandta.viper.contracts.ViperContract.Router
-import com.adefruandta.viper.interactors.ViperActivityInteractor
+import com.adefruandta.viper.contracts.ViperActivityContract.Presenter
+import com.adefruandta.viper.contracts.ViperActivityContract.ViewBehavior
 import com.adefruandta.viper.others.bindOptionalView
-import com.adefruandta.viper.presenters.ViperActivityPresenter
-import com.adefruandta.viper.routers.ViperRouter
 
 /**
  * Created by adefruandta on 8/3/17.
  */
 
-open class ViperActivity<P : Presenter> : AppCompatActivity(), ViewBehavior {
+open class ViperActivity<P : Presenter<*, *, *>> : AppCompatActivity(), ViewBehavior {
 
     // region Attributes
 
@@ -107,7 +104,7 @@ open class ViperActivity<P : Presenter> : AppCompatActivity(), ViewBehavior {
     }
 
     @Suppress("UNCHECKED_CAST")
-    protected open fun onCreatePresenter(savedInstanceState: Bundle?): P? = ViperActivityPresenter<ViewBehavior, Interactor, Router>(this, ViperActivityInteractor<InteractorOutput>(), ViperRouter(this)) as P
+    protected open fun onCreatePresenter(savedInstanceState: Bundle?): P? = null
 
     protected open fun onPresenterCreated(presenter: P?, savedInstanceState: Bundle?) {
         this.presenter = presenter
