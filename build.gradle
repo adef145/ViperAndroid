@@ -58,7 +58,7 @@ ext {
     siteUrl = 'https://github.com/adef145/ViperAndroid'
     gitUrl = 'https://github.com/adef145/ViperAndroid.git'
 
-    libraryVersion = '0.3.0'
+    libraryVersion = '0.3.1'
 
     developerId = 'adef145'
     developerName = 'Ade Fruandta'
