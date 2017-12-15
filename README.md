@@ -12,13 +12,13 @@ repositories {
 ...
 
 dependencies {
-    compile 'com.adefruandta.viper:viper:0.2.0'
+    compile 'com.adefruandta.viper:viper:0.3.0'
 }
 ```
 
 In this library the presenter & interactor implement the base lifecycle of Activity or Fragment. For more detail, see below.
 
-## [Contract]
+## Contract
 
 ### ViperContract
 * ViewBehavior
@@ -176,3 +176,8 @@ Basically, ViperActivity will inherit AppCompatActivity. Custom inherit in Viper
 * `startActivity(intent: Intent)`
 * `startActivity(intent: Intent, options: Bundle?)`
 * `startActivity(intent: Intent, requestCode: Int)`
+
+## MVP
+* ViperPresenter implements ViperContract.Presenter
+* ViperInteractor implements ViperContract.Interactor
+* ViperRouter implements ViperContract.Router
