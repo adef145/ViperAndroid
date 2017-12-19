@@ -12,7 +12,7 @@ repositories {
 ...
 
 dependencies {
-    compile 'com.adefruandta.viper:viper:0.3.0'
+    compile 'com.adefruandta.viper:viper:0.4.0'
 }
 ```
 
