@@ -21,6 +21,8 @@ open class ViperRouter : Router {
 
     protected var context: Context? = null
 
+    protected lateinit open var intent: Intent
+
     // endregion
 
     // region Constructor
@@ -52,6 +54,10 @@ open class ViperRouter : Router {
     // endregion
 
     // region Base Router
+
+    open fun open() {
+        startActivity(intent)
+    }
 
     protected open fun startActivity(intent: Intent) {
         if (this.activity != null) {
