@@ -12,7 +12,7 @@ repositories {
 ...
 
 dependencies {
-    compile 'com.adefruandta.viper:viper:0.4.0'
+    compile 'com.adefruandta.viper:viper:0.4.1'
 }
 ```
 
@@ -173,7 +173,14 @@ Basically, ViperActivity will inherit AppCompatActivity. Custom inherit in Viper
 
 ## ViperRouter
 
+##### Inherit attributes
+* `activity`
+* `fragment`
+* `context`
+* `intent`
+
 ##### Inherit functions
+* `open`
 * `startActivity(intent: Intent)`
 * `startActivity(intent: Intent, options: Bundle?)`
 * `startActivity(intent: Intent, requestCode: Int)`
