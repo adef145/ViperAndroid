@@ -43,6 +43,7 @@ In this library the presenter & interactor implement the base lifecycle of Activ
     * `hideToolbar`. Hiding action bar.
     * `showBackButton`. Showing back button / home button.
     * `hideBackButton`. Hiding back button / home button.
+    * `finish`. Finish the activity.
 
 * Presenter extends ViperContract.Presenter
     * `onCreate(extras: Bundle?, savedInstanceState: Bundle?)`. Called when presenter created.
@@ -176,6 +177,7 @@ Basically, ViperActivity will inherit AppCompatActivity. Custom inherit in Viper
 * `startActivity(intent: Intent)`
 * `startActivity(intent: Intent, options: Bundle?)`
 * `startActivity(intent: Intent, requestCode: Int)`
+* `finish`
 
 ## MVP
 * ViperPresenter implements ViperContract.Presenter
