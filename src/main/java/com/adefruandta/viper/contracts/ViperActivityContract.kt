@@ -22,6 +22,8 @@ interface ViperActivityContract {
         fun showBackButton()
 
         fun hideBackButton()
+
+        fun finish()
     }
 
     interface Presenter<V : ViewBehavior, I : Interactor, R : ViperContract.Router> : ViperContract.Presenter<V, I, R> {

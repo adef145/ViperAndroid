@@ -99,6 +99,18 @@ open class ViperRouter : Router {
         }
     }
 
+    protected open fun finish() {
+        if (activity != null) {
+            activity?.finish()
+            return
+        }
+
+        if (fragment != null) {
+            fragment?.activity?.finish()
+            return
+        }
+    }
+
     // endregion
 
     // region Router
