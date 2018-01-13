@@ -12,7 +12,7 @@ import android.support.v7.app.AppCompatActivity
  */
 open class ViperDialogRouter : ViperRouter {
 
-    protected open val tag: String = ViperDialogRouter::class.java.simpleName
+    protected open var tag: String = ViperDialogRouter::class.java.simpleName
 
     protected open var dialog: DialogFragment? = null
 
@@ -38,6 +38,10 @@ open class ViperDialogRouter : ViperRouter {
     constructor(router: ViperRouter) : super(router)
 
     open fun show(checkAdded: Boolean = true): DialogFragment? {
+        return show(checkAdded, this.tag)
+    }
+
+    open fun show(checkAdded: Boolean, tag: String): DialogFragment? {
         if (checkAdded && dialog?.isAdded == true) {
             return dialog
         }
@@ -45,7 +49,7 @@ open class ViperDialogRouter : ViperRouter {
         if (fragmentManager != null) {
             dialog?.show(fragmentManager, tag)
         }
-        
+
         return dialog
     }
 }
