@@ -15,13 +15,13 @@ abstract class ViperRecyclerViewAdapter<T, V : ViperRecyclerViewHolder<T>> : Rec
 
     // region Attributes
 
-    var data: List<T>? = null
+    open var data: List<T>? = null
         set(value) {
             field = value
             notifyDataSetChanged()
         }
 
-    var onItemClickListener: OnItemClickListener<T>? = null
+    open var onItemClickListener: OnItemClickListener<T>? = null
 
     // endregion
 
@@ -51,7 +51,7 @@ abstract class ViperRecyclerViewAdapter<T, V : ViperRecyclerViewHolder<T>> : Rec
 
     // region Methods
 
-    fun setOnItemClickListener(listener: (View, Int, T?) -> Unit) {
+    open fun setOnItemClickListener(listener: (View, Int, T?) -> Unit) {
         this.onItemClickListener = object : OnItemClickListener<T> {
             override fun onClick(v: View, position: Int, data: T?) {
                 listener(v, position, data)

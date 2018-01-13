@@ -17,9 +17,9 @@ open class ViperDialogFragment<P : Presenter<*, *, *>> : DialogFragment(), ViewB
 
     // region Attributes
 
-    protected var presenter: P? = null
+    protected open var presenter: P? = null
 
-    protected var layoutResId: Int? = null
+    protected open var layoutResId: Int? = null
 
     // endregion
 
@@ -91,11 +91,11 @@ open class ViperDialogFragment<P : Presenter<*, *, *>> : DialogFragment(), ViewB
     // region View Behavior
 
     override fun setTitle(title: String?) {
-        activity.title = title
+        dialog.setTitle(title)
     }
 
     override fun setTitle(titleResId: Int) {
-        setTitle(getString(titleResId))
+        dialog.setTitle(titleResId)
     }
 
     override fun finishActivity() = activity.finish()

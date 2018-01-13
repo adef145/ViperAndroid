@@ -12,12 +12,12 @@ open class ViperViewHolder<T>(var itemView: View) {
 
     // region Attributes
 
-    var position: Int = -1
+    open var position: Int = -1
 
-    val context: Context
+    open val context: Context
         get() = this.itemView.context
 
-    var onItemClickListener: OnItemClickListener<T>? = null
+    open var onItemClickListener: OnItemClickListener<T>? = null
 
     // endregion
 
@@ -35,7 +35,7 @@ open class ViperViewHolder<T>(var itemView: View) {
 
     // region Methods
 
-    fun setOnItemClickListener(listener: (View, Int, T?) -> Unit) {
+    open fun setOnItemClickListener(listener: (View, Int, T?) -> Unit) {
         this.onItemClickListener = object : OnItemClickListener<T> {
             override fun onClick(v: View, position: Int, data: T?) {
                 listener(v, position, data)

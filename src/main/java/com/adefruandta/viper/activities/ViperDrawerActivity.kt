@@ -22,13 +22,13 @@ abstract class ViperDrawerActivity<P : Presenter<*, *, *>> : ViperActivity<P>(),
 
     override var layoutResId: Int = R.layout.activity_drawer
 
-    protected lateinit var drawerToggle: ActionBarDrawerToggle
+    protected open lateinit var drawerToggle: ActionBarDrawerToggle
 
-    protected val drawerLayout: DrawerLayout by bindView(R.id.drawerLayout)
+    protected open val drawerLayout: DrawerLayout by bindView(R.id.drawerLayout)
 
-    protected val navigationView: NavigationView by bindView(R.id.navigationView)
+    protected open val navigationView: NavigationView by bindView(R.id.navigationView)
 
-    protected val isDrawerOpen: Boolean
+    protected open val isDrawerOpen: Boolean
         get() {
             return drawerLayout.isDrawerOpen(navigationView)
         }

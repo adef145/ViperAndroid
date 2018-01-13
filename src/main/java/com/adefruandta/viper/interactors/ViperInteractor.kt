@@ -11,7 +11,7 @@ open class ViperInteractor<O : InteractorOutput> : Interactor {
 
     // region Attributes
 
-    protected var output: O? = null
+    protected open var output: O? = null
 
     // endregion
 

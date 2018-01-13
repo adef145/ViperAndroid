@@ -18,7 +18,7 @@ abstract class ViperArrayAdapter<T, V : ViperViewHolder<T>> : ArrayAdapter<T> {
 
     // region Attributes
 
-    var onItemClickListener: OnItemClickListener<T>? = null
+    open var onItemClickListener: OnItemClickListener<T>? = null
 
     // endregion
 
@@ -77,7 +77,7 @@ abstract class ViperArrayAdapter<T, V : ViperViewHolder<T>> : ArrayAdapter<T> {
 
     // region Methods
 
-    fun setOnItemClickListener(listener: (View, Int, T?) -> Unit) {
+    open fun setOnItemClickListener(listener: (View, Int, T?) -> Unit) {
         this.onItemClickListener = object : OnItemClickListener<T> {
             override fun onClick(v: View, position: Int, data: T?) {
                 listener(v, position, data)

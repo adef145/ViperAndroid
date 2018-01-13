@@ -1,5 +1,6 @@
 package com.adefruandta.viper.viewholders
 
+import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
 import com.adefruandta.viper.listeners.OnItemClickListener
@@ -12,7 +13,10 @@ abstract class ViperRecyclerViewHolder<T>(itemView: View) : RecyclerView.ViewHol
 
     // region Attributes
 
-    var onItemClickListener: OnItemClickListener<T>? = null
+    open val context: Context
+        get() = itemView.context
+
+    open var onItemClickListener: OnItemClickListener<T>? = null
 
     // endregion
 
@@ -30,7 +34,7 @@ abstract class ViperRecyclerViewHolder<T>(itemView: View) : RecyclerView.ViewHol
 
     // region Methods
 
-    fun setOnItemClickListener(listener: (View, Int, T?) -> Unit) {
+    open fun setOnItemClickListener(listener: (View, Int, T?) -> Unit) {
         this.onItemClickListener = object : OnItemClickListener<T> {
             override fun onClick(v: View, position: Int, data: T?) {
                 listener(v, position, data)

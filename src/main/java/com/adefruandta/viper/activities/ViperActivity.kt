@@ -23,11 +23,11 @@ open class ViperActivity<P : Presenter<*, *, *>> : AppCompatActivity(), ViewBeha
 
     protected open var layoutResId: Int = R.layout.activity_base
 
-    protected var fragment: Fragment? = null
+    protected open var fragment: Fragment? = null
 
-    protected var presenter: P? = null
+    protected open var presenter: P? = null
 
-    protected val container: ViewGroup? by bindOptionalView(containerResId)
+    protected open val container: ViewGroup? by bindOptionalView(containerResId)
 
     // endregion
 

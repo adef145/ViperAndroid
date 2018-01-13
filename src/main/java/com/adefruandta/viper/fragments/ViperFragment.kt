@@ -21,9 +21,9 @@ abstract class ViperFragment<P : Presenter<*, *, *>> : Fragment(), ViewBehavior 
 
     protected open var layoutResId: Int? = null
 
-    protected var presenter: P? = null
+    protected open var presenter: P? = null
 
-    protected val hasOptionsMenu: Boolean
+    protected open val hasOptionsMenu: Boolean
         get() {
             return menuResId != null && menuResId != 0
         }
