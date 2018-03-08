@@ -30,7 +30,7 @@ open class ViperDialogFragment<P : Presenter<*, *, *>> : DialogFragment(), ViewB
         onPresenterCreated(onCreatePresenter(savedInstanceState), savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (layoutResId != null) {
             return inflater?.inflate(layoutResId!!, container, false)
         }
@@ -38,7 +38,7 @@ open class ViperDialogFragment<P : Presenter<*, *, *>> : DialogFragment(), ViewB
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter?.onViewCreated()
     }
@@ -58,7 +58,7 @@ open class ViperDialogFragment<P : Presenter<*, *, *>> : DialogFragment(), ViewB
         presenter?.onStop()
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         presenter?.onSavedInstanceState(outState)
     }
@@ -98,7 +98,9 @@ open class ViperDialogFragment<P : Presenter<*, *, *>> : DialogFragment(), ViewB
         dialog.setTitle(titleResId)
     }
 
-    override fun finishActivity() = activity.finish()
+    override fun finishActivity() {
+        activity?.finish()
+    }
 
     // endregion
 }

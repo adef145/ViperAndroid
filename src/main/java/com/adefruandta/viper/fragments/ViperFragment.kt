@@ -39,7 +39,7 @@ abstract class ViperFragment<P : Presenter<*, *, *>> : Fragment(), ViewBehavior 
         onPresenterCreated(onCreatePresenter(savedInstanceState), savedInstanceState)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         if (this.layoutResId == null) {
             return null
@@ -53,7 +53,7 @@ abstract class ViperFragment<P : Presenter<*, *, *>> : Fragment(), ViewBehavior 
         inflater?.inflate(this.menuResId!!, menu)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         presenter?.onViewCreated()
     }
@@ -78,7 +78,7 @@ abstract class ViperFragment<P : Presenter<*, *, *>> : Fragment(), ViewBehavior 
         presenter?.onActivityResult(requestCode, resultCode, data)
     }
 
-    override fun onSaveInstanceState(outState: Bundle?) {
+    override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         presenter?.onSavedInstanceState(outState)
     }
@@ -106,14 +106,16 @@ abstract class ViperFragment<P : Presenter<*, *, *>> : Fragment(), ViewBehavior 
     // region View Behavior
 
     override fun setTitle(title: String?) {
-        activity.title = title
+        activity?.title = title
     }
 
     override fun setTitle(titleResId: Int) {
         setTitle(getString(titleResId))
     }
 
-    override fun finishActivity() = activity.finish()
+    override fun finishActivity() {
+        activity?.finish()
+    }
 
     // endregion
 }

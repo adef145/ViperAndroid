@@ -27,7 +27,7 @@ abstract class ViperRecyclerViewAdapter<T, V : ViperRecyclerViewHolder<T>> : Rec
 
     // region Life Cycle
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): V? {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): V {
         val view = LayoutInflater.from(parent.context).inflate(itemLayoutResId(viewType), parent, false)
         return createViewHolder(view, viewType)
     }
