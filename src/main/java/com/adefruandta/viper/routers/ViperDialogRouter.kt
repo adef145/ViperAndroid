@@ -19,7 +19,7 @@ open class ViperDialogRouter : ViperRouter {
     protected open val fragmentManager: FragmentManager?
         get() {
             if (activity != null && activity is AppCompatActivity) {
-                return (activity as AppCompatActivity)?.supportFragmentManager
+                return (activity as AppCompatActivity).supportFragmentManager
             }
 
             if (fragment != null) {

@@ -56,9 +56,7 @@ open class ViperRouter : Router {
     // region Base Router
 
     open fun open() {
-        if (intent != null) {
-            startActivity(intent)
-        }
+        startActivity(intent)
     }
 
     protected open fun startActivity(intent: Intent) {

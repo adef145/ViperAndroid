@@ -32,7 +32,7 @@ open class ViperDialogFragment<P : Presenter<*, *, *>> : DialogFragment(), ViewB
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         if (layoutResId != null) {
-            return inflater?.inflate(layoutResId!!, container, false)
+            return inflater.inflate(layoutResId!!, container, false)
         }
 
         return super.onCreateView(inflater, container, savedInstanceState)

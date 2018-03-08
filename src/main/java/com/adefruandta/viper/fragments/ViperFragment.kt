@@ -45,7 +45,7 @@ abstract class ViperFragment<P : Presenter<*, *, *>> : Fragment(), ViewBehavior 
             return null
         }
 
-        return inflater?.inflate(this.layoutResId!!, container, attachToRoot)
+        return inflater.inflate(this.layoutResId!!, container, attachToRoot)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
