@@ -1,5 +1,5 @@
 # ViperAndroid
-[![](https://jitpack.io/v/adef145/ViperAndroid.svg)](https://jitpack.io/#adef145/ViperAndroid)
+[ ![Download](https://api.bintray.com/packages/adef145/maven/viper/images/download.svg) ](https://bintray.com/adef145/maven/viper/_latestVersion) [![](https://jitpack.io/v/adef145/ViperAndroid.svg)](https://jitpack.io/#adef145/ViperAndroid)
 
 Viper framework for android
 
