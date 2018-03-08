@@ -1,4 +1,6 @@
 # ViperAndroid
+[![](https://jitpack.io/v/adef145/ViperAndroid.svg)](https://jitpack.io/#adef145/ViperAndroid)
+
 Viper framework for android
 
 ## Download
@@ -7,12 +9,20 @@ repositories {
     maven {
         url 'https://dl.bintray.com/adef145/maven/'
     }
+    
+    maven {
+        url 'https://jitpack.io'
+    }
 }
 
 ...
 
 dependencies {
+    // for maven central
     compile 'com.adefruandta.viper:viper:0.6.3'
+    
+    // for jitpack
+    compile 'com.github.adef145:ViperAndroid:0.6.3'
 }
 ```
 
