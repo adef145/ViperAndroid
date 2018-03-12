@@ -36,6 +36,10 @@ interface ViperActivityContract {
             interactor?.onPostCreate()
         }
 
+        fun onBackPressed() {
+            interactor?.onBackPressed()
+        }
+
         fun onStart() {
             interactor?.onStart()
         }

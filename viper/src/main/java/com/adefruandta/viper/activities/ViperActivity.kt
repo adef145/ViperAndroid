@@ -54,6 +54,11 @@ open class ViperActivity<P : Presenter<*, *, *>> : AppCompatActivity(), ViewBeha
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        presenter?.onBackPressed()
+    }
+
     override fun onStart() {
         super.onStart()
         presenter?.onStart()
