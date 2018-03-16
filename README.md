@@ -19,7 +19,7 @@ repositories {
 
 dependencies {
     // for maven central
-    compile 'com.adefruandta.viper:viper:0.6.4'
+    compile 'com.adefruandta.viper:viper:0.6.5'
     
     // for jitpack
     compile 'com.github.adef145:ViperAndroid:0.6.3'

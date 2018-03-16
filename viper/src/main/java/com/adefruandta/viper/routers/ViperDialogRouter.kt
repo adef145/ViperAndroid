@@ -37,15 +37,11 @@ open class ViperDialogRouter : ViperRouter {
 
     constructor(router: ViperRouter) : super(router)
 
-    open fun show(checkAdded: Boolean = true): DialogFragment? {
-        return show(checkAdded, this.tag)
+    open fun show(): DialogFragment? {
+        return show(tag)
     }
 
-    open fun show(checkAdded: Boolean, tag: String): DialogFragment? {
-        if (checkAdded && dialog?.isAdded == true) {
-            return dialog
-        }
-
+    open fun show(tag: String): DialogFragment? {
         if (fragmentManager != null) {
             dialog?.show(fragmentManager, tag)
         }
